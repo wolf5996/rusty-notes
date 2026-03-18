@@ -1,0 +1,84 @@
+---
+title: "Rust Book Follow-Through"
+author: "Badran Elshenawy"
+date: 2026-03-18T16:19:00Z
+format: html
+---
+
+# Context
+
+-   This is my notes on the Rust book: https://rust-book.cs.brown.edu/
+
+-   I have decided that this is the language I would like to learn to get an introduction to low-level programming and to enhance my tool-building capabilities
+
+-   It does not seem easy at all but that's what makes it so interesting, and I have personally seen significant adoption in the field in the last two years
+
+-   This leads me to believe that the tool has merits, and the appealing aspect to me is the introduction to low-level code that I never had any awareness of
+
+-   As was the case for [R Packages](https://r-pkgs.org/), I am creating a Claude project to accompany this endeavor and help me create summary notes of the chapters I am going through
+
+    -   I am also going to be version-controlling the entire experience, updating and pushing notes regularly
+
+-   Exciting times ahead
+
+# Introduction
+
+Remembered! Here's the summary reformatted:
+
+**What is Rust?**
+
+-   Combines high-level ergonomics with low-level control
+    -   Lets you manage memory without the usual hassle
+
+**Who is Rust for?**
+
+-   **Dev teams**
+    -   Compiler catches subtle bugs before they ship
+    -   Also catches concurrency bugs
+    -   Tooling: Cargo (dependencies), Rustfmt (formatting), rust-analyzer (IDE support)
+-   **Students**
+    -   Great for learning systems concepts like OS development
+    -   Welcoming community
+-   **Companies**
+    -   Used in production for CLI tools, web services, embedded devices, ML, browsers (Firefox), and more
+-   **Open source contributors**
+    -   Language, tools, and libraries are community-driven
+-   **Speed & stability seekers**
+    -   **Zero-cost abstractions:** safe code is also fast code
+
+**Who is this book for?**
+
+-   Assumes prior programming experience
+    -   Not tied to any specific language
+    -   Not suitable for complete beginners
+
+**How to use the book**
+
+-   Best read front-to-back
+
+    -   Later chapters build on earlier ones
+
+-   Two chapter types
+
+    -   Concept chapters (theory)
+    -   Project chapters (Chapters 2, 12, 21)
+
+-   Key chapter highlights
+
+    -   Ch 1: install & Hello World
+    -   Ch 2: guessing game project
+    -   Ch 4: ownership
+    -   Ch 7: modules
+    -   Ch 16: concurrency
+    -   Ch 17: async/await
+    -   Ch 21: multithreaded web server project
+
+-   Reading compiler error messages is a core learning skill
+
+-   **"Ferris"** the crab mascot flags problematic code:
+
+    -   Won't compile
+    -   Panics
+    -   Misbehaves
+
+**2026-03-18:** Introduction Complete

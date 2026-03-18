@@ -1,0 +1,25 @@
+# Compiled Rust
+target/
+**/*.rs.bk
+
+# Quarto output
+_site/
+_book/
+notes.html
+notes_files/
+*.html
+!README.md
+
+# RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
