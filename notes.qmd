@@ -82,3 +82,163 @@ Remembered! Here's the summary reformatted:
     -   Misbehaves
 
 **2026-03-18:** Introduction Complete
+
+## Chapter 1: Getting Started
+
+### Installation
+
+-   Install Rust via `rustup`
+
+-   Verify Cargo with `cargo --version`
+
+-   Pre-cache dependencies for offline work with `cargo add`
+
+### Hello, World! (no Cargo)
+
+-   Source files use `.rs` extension
+
+-   Compile directly with `rustc main.rs`
+
+-   Every executable needs a `main` function
+
+-   `println!` is a macro (note the `!`)
+
+-   `rustc` is fine for trivial programs
+
+    -   Cargo is better once complexity grows
+
+### Cargo Commands
+
+-   `cargo new <name>`
+    -   Creates project directory, `Cargo.toml`, and `src/main.rs`
+    -   Initialises a Git repo by default
+    -   Override with `--vcs` flag
+-   `cargo init`
+    -   Converts an existing folder into a Cargo project
+-   `cargo build`
+    -   Compiles to `target/debug/`
+    -   Creates `Cargo.lock` to pin dependency versions
+-   `cargo run`
+    -   Builds and runs in one step
+    -   Skips recompilation if source hasn't changed
+-   `cargo check`
+    -   Verifies code compiles without producing a binary
+    -   Much faster than `cargo build`
+    -   Ideal for frequent checks during development
+-   `cargo build --release`
+    -   Compiles with optimizations
+    -   Output goes to `target/release/`
+    -   Use for benchmarking and final distribution
+
+### Project Structure
+
+-   `Cargo.toml`
+
+    -   Uses TOML format
+    -   `[package]` section: name, version, edition
+    -   `[dependencies]` section: list crates here
+
+-   `src/` holds all source code
+
+-   Top-level directory is for READMEs, licenses, config
+
+### Typical Workflow (existing project)
+
+-   `git clone <url>`
+
+-   `cd <project>`
+
+-   `cargo build`
+
+### TOML Format
+
+-   Stands for "Tom's Obvious, Minimal Language"
+
+-   A configuration file format designed to be easy to read
+
+-   Key-value pairs: `name = "hello_cargo"`
+
+-   Section headers in square brackets: `[package]`, `[dependencies]`
+
+-   Supports strings, integers, floats, booleans, arrays, and tables
+
+-   Intentionally minimal
+
+    -   No deeply nested structures
+    -   Designed to map unambiguously to a hash table
+
+-   A typical `Cargo.toml` looks like:
+
+``` toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8.5"
+```
+
+### Parallels with R Packages
+
+-   The structural similarity to R packages is striking
+
+-   Nearly every design choice in Cargo has a direct analogue in R's package system
+
+-   `Cargo.toml` ↔ `DESCRIPTION`
+
+    -   Both are the single metadata file that defines the package
+    -   Both declare name, version, and dependencies
+
+-   `src/` ↔ `R/`
+
+    -   Source code lives in a dedicated subdirectory
+    -   Top-level directory is reserved for config and documentation
+
+-   `Cargo.lock` ↔ `renv.lock`
+
+    -   Both pin exact dependency versions for reproducibility
+    -   Both are auto-generated and not meant to be hand-edited
+
+-   `cargo build` ↔ `R CMD build` / `devtools::build()`
+
+-   `cargo check` ↔ `R CMD check` / `devtools::check()`
+
+    -   Both verify correctness without producing a final distributable
+
+-   `cargo test` ↔ `devtools::test()`
+
+    -   Both run the project's test suite from one command
+
+-   `cargo new` ↔ `usethis::create_package()`
+
+    -   Both scaffold a new project with the conventional directory layout
+
+-   Crates (from crates.io) ↔ Packages (from CRAN)
+
+    -   Centralised repository of community packages
+    -   Versioned dependencies resolved automatically
+
+-   `cargo add` ↔ `usethis::use_package()`
+
+    -   Both add a dependency to the metadata file without manual editing
+
+-   The core philosophy is the same: convention over configuration
+
+    -   Both ecosystems enforce an opinionated project structure
+    -   Tooling automates building, checking, testing, and distributing
+    -   If you're comfortable with R's package conventions, Cargo should feel very familiar
+
+**2026-03-23:** Deep focus here
+
+-   Finished all of chapter 1 in a single sitting
+
+    -   In the age of agentic AI, multi-tasking seems like a great thing to do but I prefer linear workflows with deep focus at every juncture
+
+        -   That does not mean spending the whole day on one task but rather going through 10 meaningful tasks one step at a time, only moving to the next task when the first is completely finished
+
+    -   The reason I say this is that I have realized that the energy burnt through context switching is far more severe than the energy burnt by the tasks themselves
+
+        -   Multi-tasking seems cool and sexy, but deep work is the way to go
+
+        -   It's good to build micro-habits to ensure continual progress, and this works well with, not against, a deep work approach where valuable projects are given sufficient undivided attention
