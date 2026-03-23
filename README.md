@@ -12,11 +12,12 @@ Rust combines high-level ergonomics with low-level control, letting you manage m
 |------|-------------|
 | `notes.qmd` | Chapter-by-chapter notes and summaries (Quarto document) |
 | `scripts/` | Code written while following along |
+| `projects/` | Cargo projects created while following the book |
 
 ## Progress
 
 - [x] Introduction
-- [ ] Chapter 1: Getting Started
+- [x] Chapter 1: Getting Started
 - [ ] Chapter 2: Guessing Game
 - [ ] Chapter 3: Common Concepts
 - [ ] Chapter 4: Ownership
