@@ -1,25 +1,15 @@
-# Compiled Rust
-target/
-**/*.rs.bk
+# Whitelist approach -- ignore everything, then allow specific files
 
-# Quarto output
-_site/
-_book/
-notes.html
-notes_files/
-*.html
+# Ignore everything
+*
+
+# Allow core files
+!.gitignore
+!CLAUDE.md
 !README.md
+!notes.qmd
+!rust.Rproj
 
-# RStudio
-.Rproj.user/
-.Rhistory
-.RData
-.Ruserdata
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
+# Allow scripts/ directory
+!scripts/
+!scripts/**

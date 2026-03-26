@@ -12,7 +12,6 @@ Rust combines high-level ergonomics with low-level control, letting you manage m
 |------|-------------|
 | `notes.qmd` | Chapter-by-chapter notes and summaries (Quarto document) |
 | `scripts/` | Code written while following along |
-| `projects/` | Cargo projects created while following the book |
 
 ## Progress
 

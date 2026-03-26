@@ -7,19 +7,19 @@ format: html
 
 # Context
 
--   This is my notes on the Rust book: https://rust-book.cs.brown.edu/
+- This is my notes on the Rust book: https://rust-book.cs.brown.edu/
 
--   I have decided that this is the language I would like to learn to get an introduction to low-level programming and to enhance my tool-building capabilities
+- I have decided that this is the language I would like to learn to get an introduction to low-level programming and to enhance my tool-building capabilities
 
--   It does not seem easy at all but that's what makes it so interesting, and I have personally seen significant adoption in the field in the last two years
+- It does not seem easy at all but that's what makes it so interesting, and I have personally seen significant adoption in the field in the last two years
 
--   This leads me to believe that the tool has merits, and the appealing aspect to me is the introduction to low-level code that I never had any awareness of
+- This leads me to believe that the tool has merits, and the appealing aspect to me is the introduction to low-level code that I never had any awareness of
 
--   As was the case for [R Packages](https://r-pkgs.org/), I am creating a Claude project to accompany this endeavor and help me create summary notes of the chapters I am going through
+- As was the case for [R Packages](https://r-pkgs.org/), I am creating a Claude project to accompany this endeavor and help me create summary notes of the chapters I am going through
 
-    -   I am also going to be version-controlling the entire experience, updating and pushing notes regularly
+  - I am also going to be version-controlling the entire experience, updating and pushing notes regularly
 
--   Exciting times ahead
+- Exciting times ahead
 
 # Introduction
 
@@ -27,59 +27,59 @@ Remembered! Here's the summary reformatted:
 
 **What is Rust?**
 
--   Combines high-level ergonomics with low-level control
-    -   Lets you manage memory without the usual hassle
+- Combines high-level ergonomics with low-level control
+  - Lets you manage memory without the usual hassle
 
 **Who is Rust for?**
 
--   **Dev teams**
-    -   Compiler catches subtle bugs before they ship
-    -   Also catches concurrency bugs
-    -   Tooling: Cargo (dependencies), Rustfmt (formatting), rust-analyzer (IDE support)
--   **Students**
-    -   Great for learning systems concepts like OS development
-    -   Welcoming community
--   **Companies**
-    -   Used in production for CLI tools, web services, embedded devices, ML, browsers (Firefox), and more
--   **Open source contributors**
-    -   Language, tools, and libraries are community-driven
--   **Speed & stability seekers**
-    -   **Zero-cost abstractions:** safe code is also fast code
+- **Dev teams**
+  - Compiler catches subtle bugs before they ship
+  - Also catches concurrency bugs
+  - Tooling: Cargo (dependencies), Rustfmt (formatting), rust-analyzer (IDE support)
+- **Students**
+  - Great for learning systems concepts like OS development
+  - Welcoming community
+- **Companies**
+  - Used in production for CLI tools, web services, embedded devices, ML, browsers (Firefox), and more
+- **Open source contributors**
+  - Language, tools, and libraries are community-driven
+- **Speed & stability seekers**
+  - **Zero-cost abstractions:** safe code is also fast code
 
 **Who is this book for?**
 
--   Assumes prior programming experience
-    -   Not tied to any specific language
-    -   Not suitable for complete beginners
+- Assumes prior programming experience
+  - Not tied to any specific language
+  - Not suitable for complete beginners
 
 **How to use the book**
 
--   Best read front-to-back
+- Best read front-to-back
 
-    -   Later chapters build on earlier ones
+  - Later chapters build on earlier ones
 
--   Two chapter types
+- Two chapter types
 
-    -   Concept chapters (theory)
-    -   Project chapters (Chapters 2, 12, 21)
+  - Concept chapters (theory)
+  - Project chapters (Chapters 2, 12, 21)
 
--   Key chapter highlights
+- Key chapter highlights
 
-    -   Ch 1: install & Hello World
-    -   Ch 2: guessing game project
-    -   Ch 4: ownership
-    -   Ch 7: modules
-    -   Ch 16: concurrency
-    -   Ch 17: async/await
-    -   Ch 21: multithreaded web server project
+  - Ch 1: install & Hello World
+  - Ch 2: guessing game project
+  - Ch 4: ownership
+  - Ch 7: modules
+  - Ch 16: concurrency
+  - Ch 17: async/await
+  - Ch 21: multithreaded web server project
 
--   Reading compiler error messages is a core learning skill
+- Reading compiler error messages is a core learning skill
 
--   **"Ferris"** the crab mascot flags problematic code:
+- **"Ferris"** the crab mascot flags problematic code:
 
-    -   Won't compile
-    -   Panics
-    -   Misbehaves
+  - Won't compile
+  - Panics
+  - Misbehaves
 
 **2026-03-18:** Introduction Complete
 
@@ -87,87 +87,87 @@ Remembered! Here's the summary reformatted:
 
 ### Installation
 
--   Install Rust via `rustup`
+- Install Rust via `rustup`
 
--   Verify Cargo with `cargo --version`
+- Verify Cargo with `cargo --version`
 
--   Pre-cache dependencies for offline work with `cargo add`
+- Pre-cache dependencies for offline work with `cargo add`
 
 ### Hello, World! (no Cargo)
 
--   Source files use `.rs` extension
+- Source files use `.rs` extension
 
--   Compile directly with `rustc main.rs`
+- Compile directly with `rustc main.rs`
 
--   Every executable needs a `main` function
+- Every executable needs a `main` function
 
--   `println!` is a macro (note the `!`)
+- `println!` is a macro (note the `!`)
 
--   `rustc` is fine for trivial programs
+- `rustc` is fine for trivial programs
 
-    -   Cargo is better once complexity grows
+  - Cargo is better once complexity grows
 
 ### Cargo Commands
 
--   `cargo new <name>`
-    -   Creates project directory, `Cargo.toml`, and `src/main.rs`
-    -   Initialises a Git repo by default
-    -   Override with `--vcs` flag
--   `cargo init`
-    -   Converts an existing folder into a Cargo project
--   `cargo build`
-    -   Compiles to `target/debug/`
-    -   Creates `Cargo.lock` to pin dependency versions
--   `cargo run`
-    -   Builds and runs in one step
-    -   Skips recompilation if source hasn't changed
--   `cargo check`
-    -   Verifies code compiles without producing a binary
-    -   Much faster than `cargo build`
-    -   Ideal for frequent checks during development
--   `cargo build --release`
-    -   Compiles with optimizations
-    -   Output goes to `target/release/`
-    -   Use for benchmarking and final distribution
+- `cargo new <name>`
+  - Creates project directory, `Cargo.toml`, and `src/main.rs`
+  - Initialises a Git repo by default
+  - Override with `--vcs` flag
+- `cargo init`
+  - Converts an existing folder into a Cargo project
+- `cargo build`
+  - Compiles to `target/debug/`
+  - Creates `Cargo.lock` to pin dependency versions
+- `cargo run`
+  - Builds and runs in one step
+  - Skips recompilation if source hasn't changed
+- `cargo check`
+  - Verifies code compiles without producing a binary
+  - Much faster than `cargo build`
+  - Ideal for frequent checks during development
+- `cargo build --release`
+  - Compiles with optimizations
+  - Output goes to `target/release/`
+  - Use for benchmarking and final distribution
 
 ### Project Structure
 
--   `Cargo.toml`
+- `Cargo.toml`
 
-    -   Uses TOML format
-    -   `[package]` section: name, version, edition
-    -   `[dependencies]` section: list crates here
+  - Uses TOML format
+  - `[package]` section: name, version, edition
+  - `[dependencies]` section: list crates here
 
--   `src/` holds all source code
+- `src/` holds all source code
 
--   Top-level directory is for READMEs, licenses, config
+- Top-level directory is for READMEs, licenses, config
 
 ### Typical Workflow (existing project)
 
--   `git clone <url>`
+- `git clone <url>`
 
--   `cd <project>`
+- `cd <project>`
 
--   `cargo build`
+- `cargo build`
 
 ### TOML Format
 
--   Stands for "Tom's Obvious, Minimal Language"
+- Stands for "Tom's Obvious, Minimal Language"
 
--   A configuration file format designed to be easy to read
+- A configuration file format designed to be easy to read
 
--   Key-value pairs: `name = "hello_cargo"`
+- Key-value pairs: `name = "hello_cargo"`
 
--   Section headers in square brackets: `[package]`, `[dependencies]`
+- Section headers in square brackets: `[package]`, `[dependencies]`
 
--   Supports strings, integers, floats, booleans, arrays, and tables
+- Supports strings, integers, floats, booleans, arrays, and tables
 
--   Intentionally minimal
+- Intentionally minimal
 
-    -   No deeply nested structures
-    -   Designed to map unambiguously to a hash table
+  - No deeply nested structures
+  - Designed to map unambiguously to a hash table
 
--   A typical `Cargo.toml` looks like:
+- A typical `Cargo.toml` looks like:
 
 ``` toml
 [package]
@@ -181,64 +181,64 @@ rand = "0.8.5"
 
 ### Parallels with R Packages
 
--   The structural similarity to R packages is striking
+- The structural similarity to R packages is striking
 
--   Nearly every design choice in Cargo has a direct analogue in R's package system
+- Nearly every design choice in Cargo has a direct analogue in R's package system
 
--   `Cargo.toml` ↔ `DESCRIPTION`
+- `Cargo.toml` ↔ `DESCRIPTION`
 
-    -   Both are the single metadata file that defines the package
-    -   Both declare name, version, and dependencies
+  - Both are the single metadata file that defines the package
+  - Both declare name, version, and dependencies
 
--   `src/` ↔ `R/`
+- `src/` ↔ `R/`
 
-    -   Source code lives in a dedicated subdirectory
-    -   Top-level directory is reserved for config and documentation
+  - Source code lives in a dedicated subdirectory
+  - Top-level directory is reserved for config and documentation
 
--   `Cargo.lock` ↔ `renv.lock`
+- `Cargo.lock` ↔ `renv.lock`
 
-    -   Both pin exact dependency versions for reproducibility
-    -   Both are auto-generated and not meant to be hand-edited
+  - Both pin exact dependency versions for reproducibility
+  - Both are auto-generated and not meant to be hand-edited
 
--   `cargo build` ↔ `R CMD build` / `devtools::build()`
+- `cargo build` ↔ `R CMD build` / `devtools::build()`
 
--   `cargo check` ↔ `R CMD check` / `devtools::check()`
+- `cargo check` ↔ `R CMD check` / `devtools::check()`
 
-    -   Both verify correctness without producing a final distributable
+  - Both verify correctness without producing a final distributable
 
--   `cargo test` ↔ `devtools::test()`
+- `cargo test` ↔ `devtools::test()`
 
-    -   Both run the project's test suite from one command
+  - Both run the project's test suite from one command
 
--   `cargo new` ↔ `usethis::create_package()`
+- `cargo new` ↔ `usethis::create_package()`
 
-    -   Both scaffold a new project with the conventional directory layout
+  - Both scaffold a new project with the conventional directory layout
 
--   Crates (from crates.io) ↔ Packages (from CRAN)
+- Crates (from crates.io) ↔ Packages (from CRAN)
 
-    -   Centralised repository of community packages
-    -   Versioned dependencies resolved automatically
+  - Centralised repository of community packages
+  - Versioned dependencies resolved automatically
 
--   `cargo add` ↔ `usethis::use_package()`
+- `cargo add` ↔ `usethis::use_package()`
 
-    -   Both add a dependency to the metadata file without manual editing
+  - Both add a dependency to the metadata file without manual editing
 
--   The core philosophy is the same: convention over configuration
+- The core philosophy is the same: convention over configuration
 
-    -   Both ecosystems enforce an opinionated project structure
-    -   Tooling automates building, checking, testing, and distributing
-    -   If you're comfortable with R's package conventions, Cargo should feel very familiar
+  - Both ecosystems enforce an opinionated project structure
+  - Tooling automates building, checking, testing, and distributing
+  - If you're comfortable with R's package conventions, Cargo should feel very familiar
 
 **2026-03-23:** Deep focus here
 
--   Finished all of chapter 1 in a single sitting
+- Finished all of chapter 1 in a single sitting
 
-    -   In the age of agentic AI, multi-tasking seems like a great thing to do but I prefer linear workflows with deep focus at every juncture
+  - In the age of agentic AI, multi-tasking seems like a great thing to do but I prefer linear workflows with deep focus at every juncture
 
-        -   That does not mean spending the whole day on one task but rather going through 10 meaningful tasks one step at a time, only moving to the next task when the first is completely finished
+    - That does not mean spending the whole day on one task but rather going through 10 meaningful tasks one step at a time, only moving to the next task when the first is completely finished
 
-    -   The reason I say this is that I have realized that the energy burnt through context switching is far more severe than the energy burnt by the tasks themselves
+  - The reason I say this is that I have realized that the energy burnt through context switching is far more severe than the energy burnt by the tasks themselves
 
-        -   Multi-tasking seems cool and sexy, but deep work is the way to go
+    - Multi-tasking seems cool and sexy, but deep work is the way to go
 
-        -   It's good to build micro-habits to ensure continual progress, and this works well with, not against, a deep work approach where valuable projects are given sufficient undivided attention
+    - It's good to build micro-habits to ensure continual progress, and this works well with, not against, a deep work approach where valuable projects are given sufficient undivided attention for extended durations of time
