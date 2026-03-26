@@ -13,3 +13,4 @@
 # Allow scripts/ directory
 !scripts/
 !scripts/**
+.Rproj.user
