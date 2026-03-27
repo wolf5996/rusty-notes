@@ -243,7 +243,7 @@ rand = "0.8.5"
 
         -   It's good to build micro-habits to ensure continual progress, and this works well with, not against, a deep work approach where valuable projects are given sufficient undivided attention for extended durations of time
 
-# Chapter 2: Programming a Guessing Game
+## Chapter 2: Programming a Guessing Game
 
 -   Variables are **immutable by default** — add `mut` to opt into mutability
 
@@ -289,3 +289,48 @@ rand = "0.8.5"
 -   Good and quick progress here, and I finally managed to turn off code auto-completion in vs code so I can type this out myself
 
 -   Loving this language thusfar despite its finnicky aspects, but I do not think I mind any of it
+
+**Adding Dependencies**
+
+-   Rust's standard library doesn't include random number generation, so you need the external `rand` crate
+
+-   Add dependencies in `Cargo.toml` under the `[dependencies]` section (e.g., `rand = "0.8.5"`)
+
+-   Version specifiers follow **Semantic Versioning (SemVer)**
+
+    -   `0.8.5` is shorthand for `^0.8.5`
+    -   This means any version ≥ 0.8.5 but \< 0.9.0
+
+**Building with Dependencies**
+
+-   Running `cargo build` with a new dependency triggers several steps
+    -   Updates the `crates.io` registry index
+    -   Downloads the specified crate and all its transitive dependencies
+    -   Compiles everything
+-   Cargo is smart about rebuilding
+    -   If nothing changes, it does nothing
+    -   If only your code changes, it recompiles just your crate
+
+**Reproducible Builds & Cargo.lock**
+
+-   The `Cargo.lock` file ensures reproducible builds
+    -   Created on first build, records exact dependency versions
+    -   Future builds use these locked versions rather than resolving again
+    -   Should be checked into source control
+        -   very smart convention here, and R is starting to adopt something similar with `renv.lock`
+
+**Updating Dependencies**
+
+-   `cargo update` refreshes dependencies within your specified range
+    -   Ignores `Cargo.lock` and resolves the latest compatible versions
+    -   Still respects the version bounds in `Cargo.toml`
+        -   This means that it will get the latest 0.8.x version but will not jump to version 0.9.x where there could an API change that would break the code
+            -   The only way to jump to that later minor release or another major release entirely is to specify it in the `cargo.toml`
+                -   This book is much easier to go through now that I understand package development conventions a lot more from my work with R packages
+    -   To jump to a new major/minor version (e.g., 0.9.x), you must manually edit `Cargo.toml`
+
+**2026-03-27:** Stopped at [Generating a Random Number](https://rust-book.cs.brown.edu/ch02-00-guessing-game-tutorial.html#generating-a-random-number)
+
+-   Small progress but consistent and that is key
+
+    -   In the midst of everything I am doing, consistency is becoming harder sadly
