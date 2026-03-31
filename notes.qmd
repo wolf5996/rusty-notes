@@ -334,3 +334,115 @@ rand = "0.8.5"
 -   Small progress but consistent and that is key
 
     -   In the midst of everything I am doing, consistency is becoming harder sadly
+
+**Generating a random number**
+
+-   `use rand::Rng;` brings the `Rng` trait into scope
+
+    -   Traits define methods that types implement
+
+    -   The trait must be in scope to call its methods
+
+-   `rand::thread_rng()` returns a random number generator local to the current thread, seeded by the OS
+
+-   `.gen_range(1..=100)` generates a number in an inclusive range
+
+    -   `start..=end` syntax means both bounds are included
+
+-   `cargo doc --open` builds and opens docs for all your dependencies locally
+
+    -   Running `cargo doc --open` is so cool because it builds the vignettes for the packages you are using, opens that in an HTML in your browser, and allows to navigate to your desired package and function documentation
+
+**Comparing the guess to the secret number**
+
+-   `use std::cmp::Ordering;` brings in an enum with three variants: `Less`, `Greater`, `Equal`
+
+-   `.cmp(&other)` compares two values and returns an `Ordering` variant
+
+    -   Takes a reference to the value you're comparing against
+
+-   `match` expression checks the result against each "arm"
+
+    -   Each arm has a pattern and code to run if the pattern matches
+
+    -   Stops after the first successful match
+
+    -   Similar to Python's `match`/`case` (structural pattern matching)
+
+**Type mismatch and conversion**
+
+-   `guess` is a `String`, `secret_number` defaults to `i32`
+
+    -   Rust won't compare a string to a number
+
+-   Fix: shadow `guess` with a converted version
+
+    -   `let guess: u32 = guess.trim().parse().expect("Please type a number!");`
+
+-   `.trim()` strips whitespace and newline characters (`\n` or `\r\n`)
+
+-   `.parse()` converts a string to another type
+
+    -   The target type is inferred from the `u32` annotation
+
+-   Annotating `guess` as `u32` also causes Rust to infer `secret_number` as `u32`
+
+    -   Type inference flows both directions
+
+**Shadowing**
+
+-   Rust lets you declare a new variable with the same name as an existing one
+
+-   The new binding "shadows" the old one
+
+-   Common use case: converting a value from one type to another while reusing the name
+
+**Looping for multiple guesses**
+
+-   `loop { }` creates an infinite loop
+
+    -   Like Python's `while True:`
+
+-   The guess-input and comparison logic moves inside the loop
+
+-   Without a `break`, the game keeps asking forever
+
+**Quitting after a correct guess**
+
+-   Add `break` inside the `Ordering::Equal` arm
+
+    -   Uses a block `{ }` to run multiple statements in one arm
+
+-   Exiting the loop exits the program, since the loop is the last thing in `main`
+
+**Handling invalid input gracefully**
+
+-   Replace `.expect(...)` on `.parse()` with a `match` expression
+
+    -   `Ok(num) => num` extracts the parsed number on success
+
+    -   `Err(_) => continue` skips to the next loop iteration on failure
+
+-   `_` is a catch-all pattern that matches any value
+
+-   `continue` jumps back to the top of the loop
+
+-   This is a shift from "crash on error" to "handle the error"
+
+    -   `expect` = crash with a message
+
+    -   `match` on `Result` = inspect `Ok` / `Err` and decide what to do
+
+**2026-03-31:** Chapter 2 complete
+
+-   Rapid progress here
+
+    -   This programming language is finnicky, gets annoyed at the slightest mismatches, and I absolutely love it
+
+        -   This is the kind of language that needs you to clearly tell it that the type of variable (string, number, float, whatever), and I absolutely love that
+
+            -   After working with high-level languages all of my life, I find the raw specificity of low-level coding languages to be rather fascinating
+
+-   I am also trailing something new here
+
+    -   I am not going through the notes now, but I will go through them during my next session to refresh my memory about the previous one and to keep momentum
