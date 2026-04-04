@@ -1,0 +1,282 @@
+---
+title: "Cargo Quick Reference Guide"
+author: "Badran Elshenawy"
+date: today
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    code-fold: show
+    code-tools: true
+    embed-resources: true
+    self-contained: true
+    title-block-banner: true
+---
+
+# Cargo Quick Reference Guide
+
+A concise guide to the most important Cargo commands for Rust development.
+
+## Quick Reference Table
+
+| Command | Purpose | Speed |
+|---------|---------|-------|
+| `cargo new` | Create new project | N/A |
+| `cargo init` | Add Cargo to existing folder | N/A |
+| `cargo check` | Verify compilation | Fastest |
+| `cargo build` | Compile debug binary | Fast |
+| `cargo run` | Build and execute | Fast |
+| `cargo test` | Run tests | Fast |
+| `cargo doc --open` | Build and view docs | Medium |
+| `cargo build --release` | Optimized build | Slow |
+| `cargo add` | Add dependency | N/A |
+| `cargo update` | Update dependencies | N/A |
+
+---
+
+## Project Creation
+
+### **cargo new <name>**
+
+Creates a new Cargo project with the standard directory structure.
+
+```bash
+cargo new hello_cargo
+```
+
+**What it creates:**
+
+-   Project directory with the given name
+-   `Cargo.toml` — project configuration file
+-   `src/main.rs` — entry point with "Hello, world!"
+-   Initializes a Git repository by default
+
+**Override version control:**
+
+```bash
+cargo new hello_cargo --vcs none    # No version control
+cargo new hello_cargo --vcs git     # Force Git (default)
+```
+
+### **cargo init**
+
+Converts an existing directory into a Cargo project.
+
+```bash
+cd existing_folder
+cargo init
+```
+
+Useful when you want to add Cargo to a project that already has files.
+
+---
+
+## Building and Running
+
+### **cargo build**
+
+Compiles the project in debug mode.
+
+```bash
+cargo build
+```
+
+**Output:**
+
+-   Binary goes to `target/debug/`
+-   Creates `Cargo.lock` on first build (pins dependency versions)
+
+### **cargo run**
+
+Builds and runs the project in one step.
+
+```bash
+cargo run
+```
+
+**Smart behavior:**
+
+-   Skips recompilation if source hasn't changed
+-   Passes arguments after `--` to your program: `cargo run -- arg1 arg2`
+
+### **cargo check**
+
+Verifies code compiles without producing a binary.
+
+```bash
+cargo check
+```
+
+**When to use:**
+
+-   Much faster than `cargo build` — ideal for frequent checks during development
+-   Catches compilation errors without the overhead of code generation
+
+### **cargo build --release**
+
+Compiles with optimizations for production.
+
+```bash
+cargo build --release
+```
+
+**Output:**
+
+-   Optimized binary goes to `target/release/`
+-   Use for benchmarking and final distribution
+-   Takes longer to compile but runs much faster
+
+---
+
+## Dependency Management
+
+### **cargo add <crate>**
+
+Adds a dependency to `Cargo.toml`.
+
+```bash
+cargo add rand          # Add latest version
+cargo add rand@0.8      # Add specific version
+cargo add rand --dev    # Add as dev dependency
+```
+
+### **cargo update**
+
+Updates dependencies within version constraints.
+
+```bash
+cargo update
+```
+
+**Behavior:**
+
+-   Ignores `Cargo.lock` and resolves latest compatible versions
+-   Still respects version bounds in `Cargo.toml`
+-   Updates `Cargo.lock` with new resolved versions
+
+### Understanding Versions
+
+Cargo uses **Semantic Versioning (SemVer)**:
+
+| Specifier | Meaning |
+|-----------|---------|
+| `0.8.5` | `^0.8.5` — any version ≥ 0.8.5 but < 0.9.0 |
+| `1.2.3` | `^1.2.3` — any version ≥ 1.2.3 but < 2.0.0 |
+
+---
+
+## Documentation
+
+### **cargo doc --open**
+
+Builds and opens documentation for your project and all dependencies.
+
+```bash
+cargo doc --open
+```
+
+**Features:**
+
+-   Generates HTML documentation locally
+-   Opens in your default browser
+-   Navigate between your code and dependency docs
+-   Includes all public API documentation
+
+---
+
+## Testing
+
+### **cargo test**
+
+Runs all tests in your project.
+
+```bash
+cargo test              # Run all tests
+cargo test test_name    # Run specific test
+cargo test -- --nocapture  # Show println! output
+```
+
+---
+
+## Project Structure
+
+A typical Cargo project looks like this:
+
+```
+my_project/
+├── Cargo.toml          # Project metadata and dependencies
+├── Cargo.lock          # Exact dependency versions (auto-generated)
+├── src/
+│   ├── main.rs         # Binary entry point
+│   └── lib.rs          # Library code (if applicable)
+├── tests/              # Integration tests
+├── examples/           # Example code
+└── benches/            # Benchmarks
+```
+
+### **Cargo.toml** Structure
+
+```toml
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8.5"
+```
+
+**Key sections:**
+
+-   `[package]` — name, version, Rust edition
+-   `[dependencies]` — external crates your project uses
+
+---
+
+## Typical Workflow
+
+### Starting a new project:
+
+```bash
+cargo new my_project
+cd my_project
+cargo run
+```
+
+### Working on an existing project:
+
+```bash
+git clone <repository-url>
+cd project
+cargo build
+cargo test
+cargo run
+```
+
+### Development loop:
+
+```bash
+# Edit code...
+cargo check          # Quick compile check
+# Fix any errors...
+cargo test           # Run tests
+cargo run            # Test manually
+cargo build --release   # Final optimized build
+```
+
+---
+
+## Key Files
+
+| File | Purpose | Check into Git? |
+|------|---------|-----------------|
+| `Cargo.toml` | Project configuration | Yes |
+| `Cargo.lock` | Pinned dependency versions | Yes (for binaries) |
+| `src/main.rs` | Binary entry point | Yes |
+| `src/lib.rs` | Library code | Yes |
+| `target/` | Build artifacts | No (in `.gitignore`) |
+
+---
+
+*Based on notes from The Rust Programming Language (Brown University edition)*
