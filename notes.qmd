@@ -7,19 +7,19 @@ format: html
 
 # Context
 
-- This is my notes on the Rust book: https://rust-book.cs.brown.edu/
+-   This is my notes on the Rust book: https://rust-book.cs.brown.edu/
 
-- I have decided that this is the language I would like to learn to get an introduction to low-level programming and to enhance my tool-building capabilities
+-   I have decided that this is the language I would like to learn to get an introduction to low-level programming and to enhance my tool-building capabilities
 
-- It does not seem easy at all but that's what makes it so interesting, and I have personally seen significant adoption in the field in the last two years
+-   It does not seem easy at all but that's what makes it so interesting, and I have personally seen significant adoption in the field in the last two years
 
-- This leads me to believe that the tool has merits, and the appealing aspect to me is the introduction to low-level code that I never had any awareness of
+-   This leads me to believe that the tool has merits, and the appealing aspect to me is the introduction to low-level code that I never had any awareness of
 
-- As was the case for [R Packages](https://r-pkgs.org/), I am creating a Claude project to accompany this endeavor and help me create summary notes of the chapters I am going through
+-   As was the case for [R Packages](https://r-pkgs.org/), I am creating a Claude project to accompany this endeavor and help me create summary notes of the chapters I am going through
 
-  - I am also going to be version-controlling the entire experience, updating and pushing notes regularly
+    -   I am also going to be version-controlling the entire experience, updating and pushing notes regularly
 
-- Exciting times ahead
+-   Exciting times ahead
 
 # Introduction
 
@@ -27,59 +27,59 @@ Remembered! Here's the summary reformatted:
 
 **What is Rust?**
 
-- Combines high-level ergonomics with low-level control
-  - Lets you manage memory without the usual hassle
+-   Combines high-level ergonomics with low-level control
+    -   Lets you manage memory without the usual hassle
 
 **Who is Rust for?**
 
-- **Dev teams**
-  - Compiler catches subtle bugs before they ship
-  - Also catches concurrency bugs
-  - Tooling: Cargo (dependencies), Rustfmt (formatting), rust-analyzer (IDE support)
-- **Students**
-  - Great for learning systems concepts like OS development
-  - Welcoming community
-- **Companies**
-  - Used in production for CLI tools, web services, embedded devices, ML, browsers (Firefox), and more
-- **Open source contributors**
-  - Language, tools, and libraries are community-driven
-- **Speed & stability seekers**
-  - **Zero-cost abstractions:** safe code is also fast code
+-   **Dev teams**
+    -   Compiler catches subtle bugs before they ship
+    -   Also catches concurrency bugs
+    -   Tooling: Cargo (dependencies), Rustfmt (formatting), rust-analyzer (IDE support)
+-   **Students**
+    -   Great for learning systems concepts like OS development
+    -   Welcoming community
+-   **Companies**
+    -   Used in production for CLI tools, web services, embedded devices, ML, browsers (Firefox), and more
+-   **Open source contributors**
+    -   Language, tools, and libraries are community-driven
+-   **Speed & stability seekers**
+    -   **Zero-cost abstractions:** safe code is also fast code
 
 **Who is this book for?**
 
-- Assumes prior programming experience
-  - Not tied to any specific language
-  - Not suitable for complete beginners
+-   Assumes prior programming experience
+    -   Not tied to any specific language
+    -   Not suitable for complete beginners
 
 **How to use the book**
 
-- Best read front-to-back
+-   Best read front-to-back
 
-  - Later chapters build on earlier ones
+    -   Later chapters build on earlier ones
 
-- Two chapter types
+-   Two chapter types
 
-  - Concept chapters (theory)
-  - Project chapters (Chapters 2, 12, 21)
+    -   Concept chapters (theory)
+    -   Project chapters (Chapters 2, 12, 21)
 
-- Key chapter highlights
+-   Key chapter highlights
 
-  - Ch 1: install & Hello World
-  - Ch 2: guessing game project
-  - Ch 4: ownership
-  - Ch 7: modules
-  - Ch 16: concurrency
-  - Ch 17: async/await
-  - Ch 21: multithreaded web server project
+    -   Ch 1: install & Hello World
+    -   Ch 2: guessing game project
+    -   Ch 4: ownership
+    -   Ch 7: modules
+    -   Ch 16: concurrency
+    -   Ch 17: async/await
+    -   Ch 21: multithreaded web server project
 
-- Reading compiler error messages is a core learning skill
+-   Reading compiler error messages is a core learning skill
 
-- **"Ferris"** the crab mascot flags problematic code:
+-   **"Ferris"** the crab mascot flags problematic code:
 
-  - Won't compile
-  - Panics
-  - Misbehaves
+    -   Won't compile
+    -   Panics
+    -   Misbehaves
 
 **2026-03-18:** Introduction Complete
 
@@ -87,87 +87,87 @@ Remembered! Here's the summary reformatted:
 
 **Installation**
 
-- Install Rust via `rustup`
+-   Install Rust via `rustup`
 
-- Verify Cargo with `cargo --version`
+-   Verify Cargo with `cargo --version`
 
-- Pre-cache dependencies for offline work with `cargo add`
+-   Pre-cache dependencies for offline work with `cargo add`
 
 **Hello, World! (no Cargo)**
 
-- Source files use `.rs` extension
+-   Source files use `.rs` extension
 
-- Compile directly with `rustc main.rs`
+-   Compile directly with `rustc main.rs`
 
-- Every executable needs a `main` function
+-   Every executable needs a `main` function
 
-- `println!` is a macro (note the `!`)
+-   `println!` is a macro (note the `!`)
 
-- `rustc` is fine for trivial programs
+-   `rustc` is fine for trivial programs
 
-  - Cargo is better once complexity grows
+    -   Cargo is better once complexity grows
 
 **Cargo Commands**
 
-- `cargo new <name>`
-  - Creates project directory, `Cargo.toml`, and `src/main.rs`
-  - Initialises a Git repo by default
-  - Override with `--vcs` flag
-- `cargo init`
-  - Converts an existing folder into a Cargo project
-- `cargo build`
-  - Compiles to `target/debug/`
-  - Creates `Cargo.lock` to pin dependency versions
-- `cargo run`
-  - Builds and runs in one step
-  - Skips recompilation if source hasn't changed
-- `cargo check`
-  - Verifies code compiles without producing a binary
-  - Much faster than `cargo build`
-  - Ideal for frequent checks during development
-- `cargo build --release`
-  - Compiles with optimizations
-  - Output goes to `target/release/`
-  - Use for benchmarking and final distribution
+-   `cargo new <name>`
+    -   Creates project directory, `Cargo.toml`, and `src/main.rs`
+    -   Initialises a Git repo by default
+    -   Override with `--vcs` flag
+-   `cargo init`
+    -   Converts an existing folder into a Cargo project
+-   `cargo build`
+    -   Compiles to `target/debug/`
+    -   Creates `Cargo.lock` to pin dependency versions
+-   `cargo run`
+    -   Builds and runs in one step
+    -   Skips recompilation if source hasn't changed
+-   `cargo check`
+    -   Verifies code compiles without producing a binary
+    -   Much faster than `cargo build`
+    -   Ideal for frequent checks during development
+-   `cargo build --release`
+    -   Compiles with optimizations
+    -   Output goes to `target/release/`
+    -   Use for benchmarking and final distribution
 
 **Project Structure**
 
-- `Cargo.toml`
+-   `Cargo.toml`
 
-  - Uses TOML format
-  - `[package]` section: name, version, edition
-  - `[dependencies]` section: list crates here
+    -   Uses TOML format
+    -   `[package]` section: name, version, edition
+    -   `[dependencies]` section: list crates here
 
-- `src/` holds all source code
+-   `src/` holds all source code
 
-- Top-level directory is for READMEs, licenses, config
+-   Top-level directory is for READMEs, licenses, config
 
 **Typical Workflow (existing project)**
 
-- `git clone <url>`
+-   `git clone <url>`
 
-- `cd <project>`
+-   `cd <project>`
 
-- `cargo build`
+-   `cargo build`
 
 **TOML Format**
 
-- Stands for "Tom's Obvious, Minimal Language"
+-   Stands for "Tom's Obvious, Minimal Language"
 
-- A configuration file format designed to be easy to read
+-   A configuration file format designed to be easy to read
 
-- Key-value pairs: `name = "hello_cargo"`
+-   Key-value pairs: `name = "hello_cargo"`
 
-- Section headers in square brackets: `[package]`, `[dependencies]`
+-   Section headers in square brackets: `[package]`, `[dependencies]`
 
-- Supports strings, integers, floats, booleans, arrays, and tables
+-   Supports strings, integers, floats, booleans, arrays, and tables
 
-- Intentionally minimal
+-   Intentionally minimal
 
-  - No deeply nested structures
-  - Designed to map unambiguously to a hash table
+    -   No deeply nested structures
+    -   Designed to map unambiguously to a hash table
 
-- A typical `Cargo.toml` looks like:
+-   A typical `Cargo.toml` looks like:
 
 ``` toml
 [package]
@@ -181,307 +181,347 @@ rand = "0.8.5"
 
 **Parallels with R Packages**
 
-- The structural similarity to R packages is striking
+-   The structural similarity to R packages is striking
 
-- Nearly every design choice in Cargo has a direct analogue in R's package system
+-   Nearly every design choice in Cargo has a direct analogue in R's package system
 
-- `Cargo.toml` ↔ `DESCRIPTION`
+-   `Cargo.toml` ↔ `DESCRIPTION`
 
-  - Both are the single metadata file that defines the package
-  - Both declare name, version, and dependencies
+    -   Both are the single metadata file that defines the package
+    -   Both declare name, version, and dependencies
 
-- `src/` ↔ `R/`
+-   `src/` ↔ `R/`
 
-  - Source code lives in a dedicated subdirectory
-  - Top-level directory is reserved for config and documentation
+    -   Source code lives in a dedicated subdirectory
+    -   Top-level directory is reserved for config and documentation
 
-- `Cargo.lock` ↔ `renv.lock`
+-   `Cargo.lock` ↔ `renv.lock`
 
-  - Both pin exact dependency versions for reproducibility
-  - Both are auto-generated and not meant to be hand-edited
+    -   Both pin exact dependency versions for reproducibility
+    -   Both are auto-generated and not meant to be hand-edited
 
-- `cargo build` ↔ `R CMD build` / `devtools::build()`
+-   `cargo build` ↔ `R CMD build` / `devtools::build()`
 
-- `cargo check` ↔ `R CMD check` / `devtools::check()`
+-   `cargo check` ↔ `R CMD check` / `devtools::check()`
 
-  - Both verify correctness without producing a final distributable
+    -   Both verify correctness without producing a final distributable
 
-- `cargo test` ↔ `devtools::test()`
+-   `cargo test` ↔ `devtools::test()`
 
-  - Both run the project's test suite from one command
+    -   Both run the project's test suite from one command
 
-- `cargo new` ↔ `usethis::create_package()`
+-   `cargo new` ↔ `usethis::create_package()`
 
-  - Both scaffold a new project with the conventional directory layout
+    -   Both scaffold a new project with the conventional directory layout
 
-- Crates (from crates.io) ↔ Packages (from CRAN)
+-   Crates (from crates.io) ↔ Packages (from CRAN)
 
-  - Centralised repository of community packages
-  - Versioned dependencies resolved automatically
+    -   Centralised repository of community packages
+    -   Versioned dependencies resolved automatically
 
-- `cargo add` ↔ `usethis::use_package()`
+-   `cargo add` ↔ `usethis::use_package()`
 
-  - Both add a dependency to the metadata file without manual editing
+    -   Both add a dependency to the metadata file without manual editing
 
-- The core philosophy is the same: convention over configuration
+-   The core philosophy is the same: convention over configuration
 
-  - Both ecosystems enforce an opinionated project structure
-  - Tooling automates building, checking, testing, and distributing
-  - If you're comfortable with R's package conventions, Cargo should feel very familiar
+    -   Both ecosystems enforce an opinionated project structure
+    -   Tooling automates building, checking, testing, and distributing
+    -   If you're comfortable with R's package conventions, Cargo should feel very familiar
 
 **2026-03-23:** Deep focus here
 
-- Finished all of chapter 1 in a single sitting
+-   Finished all of chapter 1 in a single sitting
 
-  - In the age of agentic AI, multi-tasking seems like a great thing to do but I prefer linear workflows with deep focus at every juncture
+    -   In the age of agentic AI, multi-tasking seems like a great thing to do but I prefer linear workflows with deep focus at every juncture
 
-    - That does not mean spending the whole day on one task but rather going through 10 meaningful tasks one step at a time, only moving to the next task when the first is completely finished
+        -   That does not mean spending the whole day on one task but rather going through 10 meaningful tasks one step at a time, only moving to the next task when the first is completely finished
 
-  - The reason I say this is that I have realized that the energy burnt through context switching is far more severe than the energy burnt by the tasks themselves
+    -   The reason I say this is that I have realized that the energy burnt through context switching is far more severe than the energy burnt by the tasks themselves
 
-    - Multi-tasking seems cool and sexy, but deep work is the way to go
+        -   Multi-tasking seems cool and sexy, but deep work is the way to go
 
-    - It's good to build micro-habits to ensure continual progress, and this works well with, not against, a deep work approach where valuable projects are given sufficient undivided attention for extended durations of time
+        -   It's good to build micro-habits to ensure continual progress, and this works well with, not against, a deep work approach where valuable projects are given sufficient undivided attention for extended durations of time
 
 ## Chapter 2: Programming a Guessing Game
 
-- Variables are **immutable by default** — add `mut` to opt into mutability
+-   Variables are **immutable by default** — add `mut` to opt into mutability
 
-  - Unusual compared to Python/R where everything is mutable
-  - Immutability is a deliberate safety feature
+    -   Unusual compared to Python/R where everything is mutable
+    -   Immutability is a deliberate safety feature
 
-- `use std::io` brings modules into scope
+-   `use std::io` brings modules into scope
 
-  - Very similar to Python's `import`
+    -   Very similar to Python's `import`
 
-- `::` denotes associated functions or module paths (e.g. `String::new()`, `std::io::stdin()`)
+-   `::` denotes associated functions or module paths (e.g. `String::new()`, `std::io::stdin()`)
 
-  - Similar to R's namespacing (e.g. `dplyr::filter()`)
+    -   Similar to R's namespacing (e.g. `dplyr::filter()`)
 
-- Associated functions like `String::new()` are functions implemented on a type
+-   Associated functions like `String::new()` are functions implemented on a type
 
-  - Similar to Python class methods like `dict.fromkeys()` or constructors like `str()`
-  - `new` is a common convention but not special syntax — just a naming pattern
+    -   Similar to Python class methods like `dict.fromkeys()` or constructors like `str()`
+    -   `new` is a common convention but not special syntax — just a naming pattern
 
-- References (`&`) let multiple parts of code access data without copying
+-   References (`&`) let multiple parts of code access data without copying
 
-  - Also **immutable by default** — use `&mut` for mutable references
-  - No direct equivalent in Python/R, where references are handled implicitly
+    -   Also **immutable by default** — use `&mut` for mutable references
+    -   No direct equivalent in Python/R, where references are handled implicitly
 
-- `Result` enums (`Ok`/`Err`) are Rust's standard error-handling pattern
+-   `Result` enums (`Ok`/`Err`) are Rust's standard error-handling pattern
 
-  - The compiler actively warns you if you ignore a `Result`
-  - `.expect("message")` is a quick way to crash on error
+    -   The compiler actively warns you if you ignore a `Result`
+    -   `.expect("message")` is a quick way to crash on error
 
-- `println!` uses `{}` as placeholders
+-   `println!` uses `{}` as placeholders
 
-  - `{variable_name}` works like Python f-strings but without the `f` prefix
-  - Empty `{}` with trailing arguments works like `.format()`
+    -   `{variable_name}` works like Python f-strings but without the `f` prefix
+    -   Empty `{}` with trailing arguments works like `.format()`
 
-- `//` for line comments (same as R, vs. `#` in Python)
+-   `//` for line comments (same as R, vs. `#` in Python)
 
-- `fn main() {}` — function syntax is a mix of Python and R conventions
+-   `fn main() {}` — function syntax is a mix of Python and R conventions
 
-  - Uses `{}` for blocks like R's `function() {}`
+    -   Uses `{}` for blocks like R's `function() {}`
 
 **2026-03-26:** Stopped at [Generating a Secret Number](https://rust-book.cs.brown.edu/ch02-00-guessing-game-tutorial.html#generating-a-secret-number)
 
-- Good and quick progress here, and I finally managed to turn off code auto-completion in vs code so I can type this out myself
+-   Good and quick progress here, and I finally managed to turn off code auto-completion in vs code so I can type this out myself
 
-- Loving this language thusfar despite its finnicky aspects, but I do not think I mind any of it
+-   Loving this language thusfar despite its finnicky aspects, but I do not think I mind any of it
 
 **Adding Dependencies**
 
-- Rust's standard library doesn't include random number generation, so you need the external `rand` crate
+-   Rust's standard library doesn't include random number generation, so you need the external `rand` crate
 
-- Add dependencies in `Cargo.toml` under the `[dependencies]` section (e.g., `rand = "0.8.5"`)
+-   Add dependencies in `Cargo.toml` under the `[dependencies]` section (e.g., `rand = "0.8.5"`)
 
-- Version specifiers follow **Semantic Versioning (SemVer)**
+-   Version specifiers follow **Semantic Versioning (SemVer)**
 
-  - `0.8.5` is shorthand for `^0.8.5`
-  - This means any version ≥ 0.8.5 but \< 0.9.0
+    -   `0.8.5` is shorthand for `^0.8.5`
+    -   This means any version ≥ 0.8.5 but \< 0.9.0
 
 **Building with Dependencies**
 
-- Running `cargo build` with a new dependency triggers several steps
-  - Updates the `crates.io` registry index
-  - Downloads the specified crate and all its transitive dependencies
-  - Compiles everything
-- Cargo is smart about rebuilding
-  - If nothing changes, it does nothing
-  - If only your code changes, it recompiles just your crate
+-   Running `cargo build` with a new dependency triggers several steps
+    -   Updates the `crates.io` registry index
+    -   Downloads the specified crate and all its transitive dependencies
+    -   Compiles everything
+-   Cargo is smart about rebuilding
+    -   If nothing changes, it does nothing
+    -   If only your code changes, it recompiles just your crate
 
 **Reproducible Builds & Cargo.lock**
 
-- The `Cargo.lock` file ensures reproducible builds
-  - Created on first build, records exact dependency versions
-  - Future builds use these locked versions rather than resolving again
-  - Should be checked into source control
-    - very smart convention here, and R is starting to adopt something similar with `renv.lock`
+-   The `Cargo.lock` file ensures reproducible builds
+    -   Created on first build, records exact dependency versions
+    -   Future builds use these locked versions rather than resolving again
+    -   Should be checked into source control
+        -   very smart convention here, and R is starting to adopt something similar with `renv.lock`
 
 **Updating Dependencies**
 
-- `cargo update` refreshes dependencies within your specified range
-  - Ignores `Cargo.lock` and resolves the latest compatible versions
-  - Still respects the version bounds in `Cargo.toml`
-    - This means that it will get the latest 0.8.x version but will not jump to version 0.9.x where there could an API change that would break the code
-      - The only way to jump to that later minor release or another major release entirely is to specify it in the `cargo.toml`
-        - This book is much easier to go through now that I understand package development conventions a lot more from my work with R packages
-  - To jump to a new major/minor version (e.g., 0.9.x), you must manually edit `Cargo.toml`
+-   `cargo update` refreshes dependencies within your specified range
+    -   Ignores `Cargo.lock` and resolves the latest compatible versions
+    -   Still respects the version bounds in `Cargo.toml`
+        -   This means that it will get the latest 0.8.x version but will not jump to version 0.9.x where there could an API change that would break the code
+            -   The only way to jump to that later minor release or another major release entirely is to specify it in the `cargo.toml`
+                -   This book is much easier to go through now that I understand package development conventions a lot more from my work with R packages
+    -   To jump to a new major/minor version (e.g., 0.9.x), you must manually edit `Cargo.toml`
 
 **2026-03-27:** Stopped at [Generating a Random Number](https://rust-book.cs.brown.edu/ch02-00-guessing-game-tutorial.html#generating-a-random-number)
 
-- Small progress but consistent and that is key
+-   Small progress but consistent and that is key
 
-  - In the midst of everything I am doing, consistency is becoming harder sadly
+    -   In the midst of everything I am doing, consistency is becoming harder sadly
 
 **Generating a random number**
 
-- `use rand::Rng;` brings the `Rng` trait into scope
+-   `use rand::Rng;` brings the `Rng` trait into scope
 
-  - Traits define methods that types implement
+    -   Traits define methods that types implement
 
-  - The trait must be in scope to call its methods
+    -   The trait must be in scope to call its methods
 
-- `rand::thread_rng()` returns a random number generator local to the current thread, seeded by the OS
+-   `rand::thread_rng()` returns a random number generator local to the current thread, seeded by the OS
 
-- `.gen_range(1..=100)` generates a number in an inclusive range
+-   `.gen_range(1..=100)` generates a number in an inclusive range
 
-  - `start..=end` syntax means both bounds are included
+    -   `start..=end` syntax means both bounds are included
 
-- `cargo doc --open` builds and opens docs for all your dependencies locally
+-   `cargo doc --open` builds and opens docs for all your dependencies locally
 
-  - Running `cargo doc --open` is so cool because it builds the vignettes for the packages you are using, opens that in an HTML in your browser, and allows to navigate to your desired package and function documentation
+    -   Running `cargo doc --open` is so cool because it builds the vignettes for the packages you are using, opens that in an HTML in your browser, and allows to navigate to your desired package and function documentation
 
 **Comparing the guess to the secret number**
 
-- `use std::cmp::Ordering;` brings in an enum with three variants: `Less`, `Greater`, `Equal`
+-   `use std::cmp::Ordering;` brings in an enum with three variants: `Less`, `Greater`, `Equal`
 
-- `.cmp(&other)` compares two values and returns an `Ordering` variant
+-   `.cmp(&other)` compares two values and returns an `Ordering` variant
 
-  - Takes a reference to the value you're comparing against
+    -   Takes a reference to the value you're comparing against
 
-- `match` expression checks the result against each "arm"
+-   `match` expression checks the result against each "arm"
 
-  - Each arm has a pattern and code to run if the pattern matches
+    -   Each arm has a pattern and code to run if the pattern matches
 
-  - Stops after the first successful match
+    -   Stops after the first successful match
 
-  - Similar to Python's `match`/`case` (structural pattern matching)
+    -   Similar to Python's `match`/`case` (structural pattern matching)
 
 **Type mismatch and conversion**
 
-- `guess` is a `String`, `secret_number` defaults to `i32`
+-   `guess` is a `String`, `secret_number` defaults to `i32`
 
-  - Rust won't compare a string to a number
+    -   Rust won't compare a string to a number
 
-- Fix: shadow `guess` with a converted version
+-   Fix: shadow `guess` with a converted version
 
-  - `let guess: u32 = guess.trim().parse().expect("Please type a number!");`
+    -   `let guess: u32 = guess.trim().parse().expect("Please type a number!");`
 
-- `.trim()` strips whitespace and newline characters (`\n` or `\r\n`)
+-   `.trim()` strips whitespace and newline characters (`\n` or `\r\n`)
 
-- `.parse()` converts a string to another type
+-   `.parse()` converts a string to another type
 
-  - The target type is inferred from the `u32` annotation
+    -   The target type is inferred from the `u32` annotation
 
-- Annotating `guess` as `u32` also causes Rust to infer `secret_number` as `u32`
+-   Annotating `guess` as `u32` also causes Rust to infer `secret_number` as `u32`
 
-  - Type inference flows both directions
+    -   Type inference flows both directions
 
 **Shadowing**
 
-- Rust lets you declare a new variable with the same name as an existing one
+-   Rust lets you declare a new variable with the same name as an existing one
 
-- The new binding "shadows" the old one
+-   The new binding "shadows" the old one
 
-- Common use case: converting a value from one type to another while reusing the name
+-   Common use case: converting a value from one type to another while reusing the name
 
 **Looping for multiple guesses**
 
-- `loop { }` creates an infinite loop
+-   `loop { }` creates an infinite loop
 
-  - Like Python's `while True:`
+    -   Like Python's `while True:`
 
-- The guess-input and comparison logic moves inside the loop
+-   The guess-input and comparison logic moves inside the loop
 
-- Without a `break`, the game keeps asking forever
+-   Without a `break`, the game keeps asking forever
 
 **Quitting after a correct guess**
 
-- Add `break` inside the `Ordering::Equal` arm
+-   Add `break` inside the `Ordering::Equal` arm
 
-  - Uses a block `{ }` to run multiple statements in one arm
+    -   Uses a block `{ }` to run multiple statements in one arm
 
-- Exiting the loop exits the program, since the loop is the last thing in `main`
+-   Exiting the loop exits the program, since the loop is the last thing in `main`
 
 **Handling invalid input gracefully**
 
-- Replace `.expect(...)` on `.parse()` with a `match` expression
+-   Replace `.expect(...)` on `.parse()` with a `match` expression
 
-  - `Ok(num) => num` extracts the parsed number on success
+    -   `Ok(num) => num` extracts the parsed number on success
 
-  - `Err(_) => continue` skips to the next loop iteration on failure
+    -   `Err(_) => continue` skips to the next loop iteration on failure
 
-- `_` is a catch-all pattern that matches any value
+-   `_` is a catch-all pattern that matches any value
 
-- `continue` jumps back to the top of the loop
+-   `continue` jumps back to the top of the loop
 
-- This is a shift from "crash on error" to "handle the error"
+-   This is a shift from "crash on error" to "handle the error"
 
-  - `expect` = crash with a message
+    -   `expect` = crash with a message
 
-  - `match` on `Result` = inspect `Ok` / `Err` and decide what to do
+    -   `match` on `Result` = inspect `Ok` / `Err` and decide what to do
 
 **2026-03-31:** Chapter 2 complete
 
-- Rapid progress here
+-   Rapid progress here
 
-  - This programming language is finnicky, gets annoyed at the slightest mismatches, and I absolutely love it
+    -   This programming language is finnicky, gets annoyed at the slightest mismatches, and I absolutely love it
 
-    - This is the kind of language that needs you to clearly tell it that the type of variable (string, number, float, whatever), and I absolutely love that
+        -   This is the kind of language that needs you to clearly tell it that the type of variable (string, number, float, whatever), and I absolutely love that
 
-      - After working with high-level languages all of my life, I find the raw specificity of low-level coding languages to be rather fascinating
+            -   After working with high-level languages all of my life, I find the raw specificity of low-level coding languages to be rather fascinating
 
-- I am also trailing something new here
+-   I am also trailing something new here
 
-  - I am not going through the notes now, but I will go through them during my next session to refresh my memory about the previous one and to keep momentum
+    -   I am not going through the notes now, but I will go through them during my next session to refresh my memory about the previous one and to keep momentum
 
 **Variables and Mutability**
 
-- Variables are immutable by default — the opposite of Python and R, where reassignment is always allowed
-  - `let x = 5;` — x cannot be reassigned after this
-- You can add `mut` to allow reassignment, but this is generally poor practice
-  - `let mut x = 5;` then `x = 6;` — works but discouraged
-  - It opens the door to bugs where one part of code assumes a value is stable while another changes it
-  - Prefer creating a new variable or using shadowing instead
+-   Variables are immutable by default — the opposite of Python and R, where reassignment is always allowed
+    -   `let x = 5;` — x cannot be reassigned after this
+-   You can add `mut` to allow reassignment, but this is generally poor practice
+    -   `let mut x = 5;` then `x = 6;` — works but discouraged
+    -   It opens the door to bugs where one part of code assumes a value is stable while another changes it
+    -   Prefer creating a new variable or using shadowing instead
 
 **Shadowing**
 
-- Using `let` again with the same name creates a completely new variable
-  - `let x = 5;` then `let x = x + 1;` — x is now 6, but via a new variable
-  - The old one is hidden, not modified
-  - This is the idiomatic alternative to `mut` when you need to transform a value
-- Unlike `mut`, shadowing allows changing the type
-  - `let spaces = "   ";` then `let spaces = spaces.len();` — string to number
-- Scoped to blocks:
-  - A shadow inside `{}` disappears when the block ends
-  - The outer variable is restored
+-   Using `let` again with the same name creates a completely new variable
+    -   `let x = 5;` then `let x = x + 1;` — x is now 6, but via a new variable
+    -   The old one is hidden, not modified
+    -   This is the idiomatic alternative to `mut` when you need to transform a value
+-   Unlike `mut`, shadowing allows changing the type
+    -   `let spaces = "   ";` then `let spaces = spaces.len();` — string to number
+-   Scoped to blocks:
+    -   A shadow inside `{}` disappears when the block ends
+    -   The outer variable is restored
 
 **Constants**
 
-- Declared with `const` and can live in the global scope
+-   Declared with `const` and can live in the global scope
 
-  - `const MAX_SCORE: u32 = 100;`
-  - Unlike `let`, which can only exist inside functions
-  - Similar to defining a constant at the top of an R or Python script, but enforced by the compiler
+    -   `const MAX_SCORE: u32 = 100;`
+    -   Unlike `let`, which can only exist inside functions
+    -   Similar to defining a constant at the top of an R or Python script, but enforced by the compiler
 
-- Must have a type annotation and can only be set to compile-time expressions
+-   Must have a type annotation and can only be set to compile-time expressions
 
-- Convention: `ALL_UPPERCASE_WITH_UNDERSCORES`
+-   Convention: `ALL_UPPERCASE_WITH_UNDERSCORES`
 
 **2026-04-04:** Stopped at section 3.2
 
-- Quick progress here but not very substantial
+-   Quick progress here but not very substantial
 
-  - Quiet happy with it still and look forward to learning about data types soon
+    -   Quiet happy with it still and look forward to learning about data types soon
+
+**Data Types**
+
+-   Rust is statically typed — all types must be known at compile time
+    -   Like R and Python, the compiler can usually infer types from context
+    -   When it can't, you must annotate: `let guess: u32 = "42".parse().expect("Not a number!");`
+
+**Scalar Types**
+
+-   Rust has four: integers, floats, booleans, and characters
+    -   Same basic categories as Python and R, but with explicit size control
+
+**Integers**
+
+-   Come in signed (`i`) and unsigned (`u`) variants at fixed bit widths
+    -   `i32` is the default — signed, 32-bit
+    -   `u8` holds 0–255, `i8` holds -128–127, and so on up to 128-bit
+-   `isize` and `usize` match your system architecture (usually 64-bit)
+    -   Mainly used for indexing collections
+-   You can use `_` as a visual separator
+    -   `1_000` is the same as `1000` — like Python's `1_000`
+-   Number literals can carry a type suffix
+    -   `57u8` explicitly makes it a `u8`
+
+**Integer Overflow**
+
+-   Rust protects against overflow, unlike Python (which auto-expands) or R (which silently coerces)
+    -   In debug mode: the program panics (crashes with an error)
+    -   In release mode: values wrap around (e.g. 256 becomes 0 for `u8`)
+    -   Relying on wrapping is considered a bug
+-   The standard library provides explicit overflow-handling methods
+    -   `wrapping_add` — always wraps
+    -   `checked_add` — returns `None` on overflow
+    -   `saturating_add` — clamps at the min/max value
+
+**2026-04-06:** Stopped at [Floating-Point Types](https://rust-book.cs.brown.edu/ch03-02-data-types.html#floating-point-types)
+
+-   Small but consistent always wins the race
+
+-   I finally understood why u8 only represents 0-255 integers and the difference between `u` and `i` in `u16` vs `i16`
