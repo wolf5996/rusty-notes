@@ -758,3 +758,68 @@ Good catch — here's the corrected order:
 -   Not great progress but good to be back
 
     -   Code is not horrid to read but details are complex
+
+**Loop Labels**
+
+-   When you have nested loops, `break` and `continue` apply to the **innermost** loop by default
+
+-   You can label a loop with a single-quote prefix (e.g., `'counting_up: loop { ... }`) to target it explicitly with `break` or `continue`
+
+    -   `break 'counting_up;` exits the labeled outer loop
+    -   `continue 'a;` jumps back to the labeled loop's next iteration
+
+-   Python comparison: Python doesn't have loop labels at all
+
+    -   You'd need a flag variable or refactor into a function with `return`
+
+-   R comparison: same situation — no loop labels, you'd use a flag or `return()` from a function
+
+**`while` Loops**
+
+-   Rust's `while` works like Python's and R's: runs as long as a condition is `true`
+    -   `while number != 0 { ... }`
+-   Avoids the more verbose `loop` + `if` + `break` pattern
+
+**`for` Loops and Collections**
+
+-   Iterating with `while` and a manual index is **error-prone** and **slow**
+
+    -   Risk of out-of-bounds panic if the index/condition is wrong
+    -   Compiler adds bounds-checking code on every iteration
+
+-   `for element in a { ... }` is the idiomatic Rust approach
+
+    -   **Safer:** no risk of going out of bounds
+    -   **Faster:** no per-iteration bounds check needed
+    -   **More maintainable:** changing array size doesn't require updating a separate condition
+
+-   Python comparison: very similar to `for element in a:`
+
+-   R comparison: similar to `for (element in a) { ... }`
+
+**`for` with Ranges**
+
+-   `for number in (1..4).rev()` counts down from 3 to 1
+    -   `1..4` is a **Range** — generates numbers from 1 up to (but not including) 4
+    -   `.rev()` reverses the range
+-   Python comparison: `range(1, 4)` is nearly identical to `1..4`
+    -   Reversed: `reversed(range(1, 4))`
+-   R comparison: `3:1` or `rev(1:3)`
+    -   Note: R ranges are inclusive on both ends, Rust ranges exclude the upper bound
+
+**Key Takeaway**
+
+-   `for` loops are the most commonly used loop in Rust, even when you just want to repeat something N times
+    -   Preferred for safety, conciseness, and performance
+        -   That's even better for me because that's the most common type of loop I code in my code
+
+**Quiz Highlights**
+
+-   `[5; 10]` creates an array of ten `5`s (sum = 50)
+    -   Don't confuse with `[5, 10]`, which is a two-element array
+
+**2026-04-28:** Done with Chapter 3
+
+-   Sporadic progress is irritating me but that's life for you—lots of interviews and events I had to take care of so not much mental bandwidth to consume code
+
+-   Things are starting to quiet down now due to a combination of things being finished and myself running short on bandwidth in general, so should be doing this more often
