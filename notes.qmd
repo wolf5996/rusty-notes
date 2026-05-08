@@ -823,3 +823,75 @@ Good catch — here's the corrected order:
 -   Sporadic progress is irritating me but that's life for you—lots of interviews and events I had to take care of so not much mental bandwidth to consume code
 
 -   Things are starting to quiet down now due to a combination of things being finished and myself running short on bandwidth in general, so should be doing this more often
+
+    -   Small update: things were not that quite—I had to prepare for multiple interviews and do a significant amount of preparation for each of these
+
+## Chapter 4: Understanding Ownership
+
+**What Is Ownership? — Safety and Undefined Behavior**
+
+-   **Ownership** is Rust's core discipline for ensuring program safety
+
+-   **Safety = no undefined behavior**
+
+    -   A program is "safe" if every operation has a well-defined result
+
+    -   A program is "unsafe" if it can reach a state where the outcome is unpredictable (undefined behavior)
+
+-   **The motivating example: using a variable before it's defined**
+
+    -   `read(x)` before `let x = true;` is unsafe — `x` has no value yet
+
+    -   Python/JS would catch this at run-time (`NameError` / `ReferenceError`)
+
+    -   Rust catches it at compile-time instead (`error[E0425]: cannot find value`)
+
+-   **Why compile-time over run-time?**
+
+    -   Run-time checks (like Python's interpreter checking if a variable exists on every read) cost performance
+
+    -   **Rust's goal:** compile to efficient binaries with minimal run-time overhead
+
+    -   Two wins from compile-time checking:
+
+        -   **Reliability** — bugs caught before production
+
+        -   **Performance** — no need for run-time guard checks
+
+-   **What undefined behavior actually looks like (under the hood)**
+
+    -   In the safe version, assembly does `mov edi, 1` (puts `true` into register) *then* calls `read`
+
+    -   In the unsafe version, `read` gets called first — `edi` could contain anything (`2`, `100`, `0x1337BEEF`)
+
+    -   The `if y { .. }` in `read` assumes `y` is `0` or `1` — anything else is undefined behavior
+
+-   **Undefined behavior outcomes range from harmless to catastrophic**
+
+    -   Might silently work fine
+
+    -   Might segfault immediately
+
+    -   Might create an exploitable security vulnerability
+
+-   **Context: why this matters for Rust specifically**
+
+    -   Rust is a low-level language with direct memory access
+
+    -   \~70% of security vulnerabilities in low-level systems come from **memory corruption** (a form of undefined behavior)
+
+    -   Rust can't prevent *all* bugs (e.g. bad API design), but it eliminates entire categories of them
+
+-   **Python/R comparison**
+
+    -   Python and R are interpreted — they check things like "is this variable defined?" at run-time, every time
+
+    -   **The tradeoff:** easier to write quick scripts, but you pay a performance cost and bugs can hide until that code path actually runs
+
+    -   Rust flips this: stricter at compile-time, but once it compiles, a whole class of run-time surprises is gone
+
+**2026-05-08:** Stopped at [Ownership as a Discipline for Memory Safety](https://rust-book.cs.brown.edu/ch04-01-what-is-ownership.html#ownership-as-a-discipline-for-memory-safety)
+
+-   Cool progress so quite happy and all of it seems to make sense until now so I am happy
+
+    -   The core message is that safety is the absence of **undefined behavior**, and that is the core tenet of this language, which is rather admirable
